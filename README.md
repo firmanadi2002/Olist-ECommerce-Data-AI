@@ -16,11 +16,14 @@ Membangun sistem cerdas yang mampu menganalisis tren pendapatan, mengelompokkan 
 Pada tahap ini, saya merancang miniatur *database* relasional menggunakan **SQLite** dan menulis *query* SQL kompleks (dengan operasi `JOIN` dan agregasi) untuk mengekstrak *insight* bisnis.
 
 ### 1. Tren Pendapatan Bulanan
-[MASUKKAN SCREENSHOT GRAFIK GARIS TREN PENDAPATAN DI SINI]
+<img width="1401" height="525" alt="income_monthly" src="https://github.com/user-attachments/assets/48796d46-cc0a-44b4-abc3-4b9052a2aff3" />
+
 > **Insight Bisnis:** Terjadi lonjakan pendapatan yang sangat tajam pada bulan November 2017, yang berkorelasi kuat dengan musim belanja liburan dan *Black Friday*. Secara keseluruhan, tren pendapatan dari tahun ke tahun menunjukkan pertumbuhan yang positif.
 
 ### 2. Top 10 Kategori Produk Penyumbang Pendapatan
-[MASUKKAN SCREENSHOT GRAFIK BATANG KATEGORI PRODUK DI SINI]
+
+<img width="1401" height="525" alt="top10_category" src="https://github.com/user-attachments/assets/56a33d7b-eb13-43e2-9a20-04685bfa0407" />
+
 > **Insight Bisnis:** Kategori `beleza_saude` (Kesehatan & Kecantikan) merupakan tulang punggung pendapatan perusahaan. Ini mengindikasikan bahwa kampanye promosi masa depan harus sangat difokuskan pada produk *skincare* dan kosmetik untuk memaksimalkan ROI (Return on Investment).
 
 ---
@@ -29,8 +32,10 @@ Pada tahap ini, saya merancang miniatur *database* relasional menggunakan **SQLi
 Mengetahui produk yang laris saja tidak cukup; kita harus mengenali pelanggannya. Saya melakukan rekayasa fitur (*Feature Engineering*) untuk mengekstrak metrik **RFM (Recency, Frequency, Monetary)** dari riwayat transaksi, kemudian melatih model *Unsupervised Learning* menggunakan **K-Means Clustering**.
 
 ### Segmentasi Pelanggan 3D
-[MASUKKAN SCREENSHOT GRAFIK 3D K-MEANS DI SINI]
-[MASUKKAN SCREENSHOT TABEL KARAKTERISTIK RATA-RATA KLASTER DI SINI]
+<img width="1401" height="525" alt="customer_segmentation" src="https://github.com/user-attachments/assets/b69cc079-1ec8-4bde-92d7-a5522d927ef8" />
+
+<img width="374" height="192" alt="image" src="https://github.com/user-attachments/assets/fe80ed04-8266-4056-96c5-9e24bcaf28f0" />
+
 
 > **Hasil Segmentasi:**
 > * **Cluster 2 (Sultan/VIP):** Pelanggan dengan pembelanjaan tertinggi, sering berbelanja, dan transaksi terakhirnya baru-baru ini.
@@ -47,6 +52,8 @@ Agar model *Machine Learning* tidak sekadar menjadi *notebook* statis, saya meng
 > **Cara Kerja Sistem:** Ketika ID pelanggan (misal: pelanggan dari Cluster VIP) masuk ke dalam sistem, AI langsung memproses data RFM terkini, melakukan standarisasi (*scaling*), dan mengembalikan instruksi otomatis ke *frontend* (misal: *"Tampilkan Banner Khusus VIP & Berikan Akses Awal Produk Baru"*).
 
 ---
+
+Model K-Means dan Scaler kemudian diekspor menggunakan Joblib (.pkl) sehingga siap di-deploy ke dalam arsitektur microservice berbasis FastAPI untuk melayani request (inferensi) secara real-time dari aplikasi frontend.
 
 ## 💡 E. Kesimpulan & Dampak Bisnis
 Melalui *pipeline* terintegrasi ini, perusahaan dapat:
